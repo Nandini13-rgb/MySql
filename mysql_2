@@ -1,0 +1,20 @@
+create database company;
+use company;
+create table employees(id int primary key, name varchar(15), adharnumber int not null);
+insert into employees values(1,"adam", 2345);
+insert into employees values(2,"ewa",2345);
+
+select * from employees;
+drop table emolyees; -- getting error in running this line
+
+create table employee(id int primary key, name varchar(15), adharnumber int unique);
+insert into employee values(1,"adam", 2345);
+insert into employee values(2,"ewa",2346);
+
+alter table employee modify adharnumber int not null;
+
+insert into employee values(3,"jack",2347);
+insert into employee values(4,"karim")
+
+
+select * from employee;
