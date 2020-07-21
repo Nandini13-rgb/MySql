@@ -1,0 +1,46 @@
+create database zomato;
+use zomato;
+create table custumers(cust_id INT PRIMARY key,name varchar(20) not null,contact_number varchar(10) not null);
+insert into custumers values(1,"Fardeen","1234");
+insert into custumers values(2,"Mannat","2345");
+insert into custumers values(3,"Ewa","3456");
+insert into custumers values(4,"E","3446");
+
+
+create table restaurants(restro_id int primary key,name varchar(15),address varchar(20));
+
+insert into restaurants values(1,"abc","Mumbai");
+insert into restaurants values(2,"Electicca","Jaipur");
+insert into restaurants values(3,"OUT","Delhi");
+
+
+create table orders(order_id int,cust_id int,restro_id int,amount int,
+                    foreign key (cust_id) references costumers(cust_id),
+                    foreign key (restro_id) references restaurants(restro_id));
+
+insert into orders values(1,2,1,100);
+insert into orders values(1,1,1,200);
+insert into orders values(1,3,2,300);
+insert into orders values(3,4,3,400);
+
+
+select * from orders;
+
+-- inner join only gives intersection of both tables
+
+select a.*,b.* from custumers a inner join orders b on a.cust_id = b.cust_id;
+
+-- left join gives left table as well intersection of two tables two
+select * from custumers a left join orders b on a.cust_id = b.cust_id;
+
+-- right join gives right table as well intersection of both tables too
+select * from custumers a right join orders b on a.cust_id = b.cust_id;
+
+-- give contact nuber in order
+select a.*,b.* from custumers a inner join orders b on a.cust_id = b.cust_id order by contact_number;
+
+-- joining three tables
+select * from custumers a inner join orders b on a.cust_id = b.cust_id inner join restaurants c on b.restro_id = c.restro_id ;
+
+-- give the name of restaurant for a paritcular order id
+select * from custumers a inner join orders b on a.cust_id = b.cust_id inner join restaurants c on b.restro_id = c.restro_id where order_id = 3;
