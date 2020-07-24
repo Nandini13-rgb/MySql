@@ -30,4 +30,19 @@ insert into details values("Banglore","suraj@geeks.com",1008,"IMO finalist");
 insert into details values("Mumbai","sasukeh:geeks.com",2211,"Make a robot");
 insert into details values("Ahmedabad","itachi@geeks.com",1172,"Code Jam finalist");
 
+-- 2.a
 select a.s_name, b.score, c.address_city from student a join marks b on a.s_id = b.s_id join details c on b.school_id = c.school_id;
+
+-- 2.b
+select a.s_name, c.email_id from student a join marks b on a.s_id = b.s_id left join details c on b.school_id = c.school_id;
+
+-- 2.d
+select a.s_name, c.email_id from student a join marks b on a.s_id = b.s_id join details c on b.school_id = c.school_id where accomplishment = "IMO finalist";
+
+-- 2.c
+select count(status) from marks where status = "pass";
+
+select count(status) from marks where status = "fail";
+
+-- 2.e
+select distinct address_city from details;
