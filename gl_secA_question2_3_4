@@ -46,3 +46,33 @@ select count(status) from marks where status = "fail";
 
 -- 2.e
 select distinct address_city from details;
+
+-- 3.a
+select score from marks  where score>(select score from marks where s_id = 6);
+
+-- 3.b
+select  distinct school_id from marks;
+
+-- 3.d
+select s_name from student where s_name like "%s_";
+
+-- 3.e
+select substring(s_name,1,2) from  student;
+
+-- 4.a
+select email_id from details where accomplishment like "%Geek%";
+
+-- 4.b
+select a.status, b.s_name from marks a inner join student b on a.s_id = b.s_id where school_id in (1004, 1012, 1016) ;
+
+-- what's teh difference
+select a.status, b.s_name from marks a inner join student b on a.s_id = b.s_id where school_id = 1004 or 1012 or 1016 ;
+
+-- 4.c
+select b.s_name from marks a inner join student b on a.s_id = b.s_id where score between 80 and 90;
+
+-- 4.d
+
+-- 4.e
+select avg(score) from marks;
+
