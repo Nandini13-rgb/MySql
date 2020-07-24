@@ -1,0 +1,36 @@
+create database college;
+use college;
+create table instructor(instructorid int, name varchar(30), department varchar(30), salary int);
+insert into instructor values(44547,"Smith","Computer Science",95000);
+insert into instructor values(44541,"Bill","Electrical",55000);
+insert into instructor values(47778,"Sam","Humanities",44000);
+insert into instructor values(48147,"Erik","Mechanical",80000);
+insert into instructor values(411547,"Melisa","Informative Technology",65000);
+insert into instructor values(48898,"Jena","Civil",50000);
+-- select * from instructor
+
+create table department(department varchar(30), budget int);
+insert into department values("Computer Science",100000);
+insert into department values("Electrical",80000);
+insert into department values("Humanities",50000);
+insert into department values("Mechanical",40000);
+insert into department values("Informative Technology",90000);
+insert into department values("Civil",60000);
+
+-- all professors whose salary is grater than the average budget of all departments
+select avg(budget)  "average" from department;
+select name from instructor where salary>(select avg(budget) from department);
+-- select name from instructor where salary>average;
+
+
+-- all departments which has budget more than 50000
+select department from department where budget>50000;
+
+-- instructors who have id length of 6
+select name from instructor where length(instructorid) = 6;
+
+-- instructor name with their department name and budget
+select a.name,a.department, b.budget from instructor a  join department b on a.department = b.department;
+
+-- all the details of instructors whose departmetn name contain "science"
+select name from instructor where department like "%Science%";
