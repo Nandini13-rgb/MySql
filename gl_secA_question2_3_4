@@ -1,5 +1,5 @@
 create database school;
-use school
+use school;
 create table student(s_id int, s_name varchar(20));
 insert into student values(1,"Jack");
 insert into student values(2,"Rithvik");
@@ -72,6 +72,11 @@ select a.status, b.s_name from marks a inner join student b on a.s_id = b.s_id w
 select b.s_name from marks a inner join student b on a.s_id = b.s_id where score between 80 and 90;
 
 -- 4.d
+select score ,case when score>90 then '1st Division'
+              when score>70 then '2nd Division'
+              when score>50 then '3rd Division'
+              else 'Fail' end as tag
+              from marks;
 
 -- 4.e
 select avg(score) from marks;
